@@ -1,0 +1,183 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* coloca o tamanho das caixas como o tamanho da borda*/
+}
+
+body{
+    /*
+    background-image: url(./Assets/bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;*/
+
+    background:var(--bg-color) no-repeat top center/cover
+
+
+}
+body */* o hashtag funciona como seletor universal*/{
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+:root{
+    --text-color:white;
+    --bg-color:url(./Assets/bg-mobile.jpg);
+    --stroke-color :rgba(255, 255, 255, 0.5);
+    --surface-color:rgba(255, 255, 255, 0.1);
+    --surface-color-hover:rgba(0,0,0,0.5);
+    --highlight-color:rgba(255,255,255,0.2);
+    --switch-button:url(/Assets/moonstars.svg);
+    /*criar variaveis de estilo*/
+}
+.light{
+    --text-color:black;
+    --bg-color: url(./Assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0,0,0,0.5);
+    --surface-color:rgba(0,0,0,0.05);
+    --surface-color-hover:rgba(0,0,0,0.2);
+    --highlight-color:rgba(0,0,0,0.1);
+    --switch-button:url(/Assets/sun.svg);
+}
+
+
+
+#container{
+    /*deixar a largura sempre em 100%, para suportar todos os dispositivos, mas com uma max-widht de 588 para nao aumentar infinitamente*/
+    width: 100%;
+    max-width: 588px;
+    padding:0 24px;
+    /*height: 712px;*/
+    /*auto deixa o mesmo espaço dos dois lados, esuqerdo e direito*/
+    margin: 56px auto 0 auto;
+}
+#profile{
+    text-align: center;
+    padding: 24px;
+}
+
+#profile p{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+#profile img{
+    width: 112px;
+}
+
+/*switch*/
+/*trocar lado do botao*/
+.light #switch button{
+    left: initial; /* volta o left para sua posição inicial*/
+    right: 0;
+}
+
+
+
+#switch{
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+    /* voce deixa os elementos internos a div relativizados, logo, elementos absolute vao respeitar as bordas da div*/
+}
+
+#switch button{
+    width: 32px;
+    height: 32px;
+    background: #fff var(--switch-button) no-repeat;
+    border-radius: 50%;
+    border: none;
+    background-position: center;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    
+}
+#switch span{
+    width: 64px;
+    display: block;
+    height: 24px;
+    border-radius: 9999px;
+    background-color: var( --surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+}
+
+
+
+
+
+
+
+/*Links*/
+ul li a{
+    display: flex;
+    border: 1px solid var(--stroke-color);
+    justify-content: center;
+    padding:  16px 24px;
+    background: var(--surface-color);
+    border-radius: 8px;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    transition: background 0.5s;
+    text-decoration: none;
+}
+li a:hover{
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+}
+
+#social-links{
+    display:flex;
+    padding: 24px 0;
+    flex-direction: row;
+    
+    width: 100%;
+    justify-content: center;
+    font-size: 24px;
+}
+
+#social-links a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+#social-links a:hover{
+    background-color: var(--highlight-color);
+    
+    
+}
+footer{
+    padding: 24px 0;
+    text-align: center;
+}
+
+
+/*media queries*/
+/*quando a tela for maior que 700px ele vai aplicar as regras dentro das chaves*/
+@media (min-width:700px) {
+    /*aletrar o :root para trocar o background*/
+    :root{
+        --bg-color:url(./Assets/bg-desktop.jpg);
+    }
+    /*alterar também para o light*/
+    .light{
+        --bg-color:url(./Assets/bg-desktop-light.jpg);
+    }
+}
