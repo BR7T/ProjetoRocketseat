@@ -71,8 +71,8 @@ body */* o hashtag funciona como seletor universal*/{
 /*switch*/
 /*trocar lado do botao*/
 .light #switch button{
-    left: initial; /* volta o left para sua posição inicial*/
-    right: 0;
+    animation: slide-in 0.4s forwards /*forward deixa no lugar aonde a animação parou*/;
+    /*trocando o movimento truncado para mais fluido*/
 }
 
 
@@ -96,8 +96,15 @@ body */* o hashtag funciona como seletor universal*/{
     top: 50%;
     transform: translateY(-50%);
     left: 0;
+    animation: slide-out 0.4s forwards;
     
 }
+#switch button:hover{
+outline: 8px solid var(--highlight-color);
+transition: 0.1s ;
+}
+
+
 #switch span{
     width: 64px;
     display: block;
@@ -180,5 +187,23 @@ footer{
     /*alterar também para o light*/
     .light{
         --bg-color:url(./Assets/bg-desktop-light.jpg);
+    }
+}
+
+/*animation*/
+@keyframes slide-in {
+    from{
+        left:0;
+    }
+    to{
+        left:50%
+    }
+}
+@keyframes slide-out {
+    from{
+        left:50%
+    }
+    to{
+        left: 0;
     }
 }
